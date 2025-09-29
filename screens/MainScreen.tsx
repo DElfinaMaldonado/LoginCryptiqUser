@@ -4,8 +4,8 @@ import { View, StyleSheet, Image } from 'react-native';
 export default function WelcomeInitial() {
   return (
     <View style={styles.container}>
-      <Image
-        source={require("../assets/image.png")}
+    <Image
+        source={require("../assets/Cryptiq_WelcomeSplash.png")}
         resizeMode="contain"
       />
     </View>
@@ -15,12 +15,10 @@ export default function WelcomeInitial() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  logo: {
-    width: 100,
-    height: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
   },
 });
+
+
