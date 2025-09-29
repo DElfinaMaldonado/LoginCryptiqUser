@@ -51,10 +51,9 @@ const styles = StyleSheet.create({
         shadowRadius: 6,
       },
       android: {
-        shadowColor: '#00D1B2',
+        shadowColor: '#b62a00ff',
         shadowOpacity: 0.3,
-        borderRadius: 25,
-        padding: 4,
+        shadowRadius: 25,
         elevation: 1
       },
     }),
@@ -63,12 +62,12 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 24,
     backgroundColor: '#3A3B41',
-    borderColor: '#00D1B2',
+    borderColor: '#d100b5ff',
     borderWidth: 2,
     borderRadius: 25,
   },
   buttonText: {
-    color: '#00D1B2',
+    color: '#b62a00ff',
     fontWeight: 'bold',
     fontSize: 18,
   },

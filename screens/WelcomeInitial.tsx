@@ -1,8 +1,6 @@
-// Binding element 'navigation' implicitly has an 'any' type.
-//React Hook useEffect has a missing dependency: 'navigation'. Either include it or remove the dependency array.
 import React, { useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
-import * as Animatable from 'react-native-animatable';
+import Video from 'react-native-video';
 
 import type { StackNavigationProp } from '@react-navigation/stack';
 
@@ -21,12 +19,13 @@ export default function WelcomeInitial({ navigation }: WelcomeInitialProps) {
 
   return (
     <View style={styles.container}>
-      <Animatable.Image
-        animation="zoomIn"
-        duration={5000}
-        source={require('../assets/logocryptiq.png')}
-        style={styles.logo}
+      <Video
+        source={require('../assets/Cryptiq_Logo_Animation_V3.mp4')}
+        style={styles.video}
         resizeMode="contain"
+        repeat={false}
+        muted={true}
+        onEnd={() => navigation.replace('MainScreen')}
       />
     </View>
   );
@@ -39,8 +38,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  logo: {
-    width: 100,
-    height: 100,
+  video: {
+    width: '100%',
+    height: '100%',
   },
 });
