@@ -1,13 +1,27 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableOpacity, Alert, Platform, Dimensions,} from 'react-native';
+
+const { width, height } = Dimensions.get('window');
 
 export default function WelcomeInitial() {
   return (
     <View style={styles.container}>
-    <Image
-        source={require("../assets/Cryptiq_WelcomeSplash.png")}
-        resizeMode="contain"
+      <Image
+        source={require('../assets/Cryptiq_WelcomeSplash.png')}
+        style={styles.WelcomeSplash}
+        resizeMode="cover"
       />
+      <View style={styles.buttonWrapper}>
+        <View style={styles.shadowWrapper}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => Alert.alert('Cannot press this one')}
+            disabled
+          >
+            <Text style={styles.buttonText}>Start / Sign Up</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 }
@@ -15,10 +29,47 @@ export default function WelcomeInitial() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  WelcomeSplash: {
+    position: 'absolute',
+    width: width,
+    height: height,
+  },
+  buttonWrapper: {
+    position: 'absolute',
+    bottom: 80,
+    width: '100%',
     alignItems: 'center',
-    padding: 24,
+    justifyContent: 'center',
+  },
+  shadowWrapper: {
+    ...Platform.select({
+      ios: {
+        shadowColor: '#00D1B2',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 6,
+      },
+      android: {
+        shadowColor: '#00D1B2',
+        shadowOpacity: 0.3,
+        borderRadius: 25,
+        padding: 4,
+        elevation: 1
+      },
+    }),
+  },
+  button: {
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    backgroundColor: '#3A3B41',
+    borderColor: '#00D1B2',
+    borderWidth: 2,
+    borderRadius: 25,
+  },
+  buttonText: {
+    color: '#00D1B2',
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 });
-
-
