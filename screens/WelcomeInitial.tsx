@@ -1,35 +1,24 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Video from 'react-native-video';
 
-import type { StackNavigationProp } from '@react-navigation/stack';
+const WelcomeInitial = () => (
+  <View style={styles.container}>
+    <Video
+      source={require('../assets/Cryptiq_Logo_Animation_V3.mp4')} // 👈 Asegúrate de que la ruta sea correcta
+      style={styles.video}
+      resizeMode="contain"
+      paused={false}
+      muted={true}
+      repeat={false}
+      controls={false}
+      onLoad={() => console.log('[Video] Cargado')}
+      onError={(e) => console.warn('[Video] Error:', e)}
+    />
+  </View>
+);
 
-type WelcomeInitialProps = {
-  navigation: StackNavigationProp<any>;
-};
-
-export default function WelcomeInitial({ navigation }: WelcomeInitialProps) {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigation.replace('MainScreen');
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, [navigation]);
-
-  return (
-    <View style={styles.container}>
-      <Video
-        source={require('../assets/Cryptiq_Logo_Animation_V3.mp4')}
-        style={styles.video}
-        resizeMode="contain"
-        repeat={false}
-        muted={true}
-        onEnd={() => navigation.replace('MainScreen')}
-      />
-    </View>
-  );
-}
+export default WelcomeInitial;
 
 const styles = StyleSheet.create({
   container: {
