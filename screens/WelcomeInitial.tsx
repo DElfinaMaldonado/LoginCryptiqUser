@@ -5,7 +5,7 @@ import Video from 'react-native-video';
 const WelcomeInitial = () => (
   <View style={styles.container}>
     <Video
-      source={require('../assets/Cryptiq_Logo_Animation_V3.mp4')} // 👈 Asegúrate de que la ruta sea correcta
+      source={require('../assets/Cryptiq_Logo_Animation_V3.mp4')}
       style={styles.video}
       resizeMode="contain"
       paused={false}
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 24,
   },
   video: {
     width: '100%',
