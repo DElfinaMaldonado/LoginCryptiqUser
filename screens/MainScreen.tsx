@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
                 border: 'none',
                 borderRadius: 100,
                 cursor: 'pointer',
-                boxShadow: '0 5px 50px 0 hsla(162, 80%, 80%, 0.45)',
+                boxShadow: '0 5px 50px 0 hsla(162, 80%, 80%, 0.70)',
                 shadowOpacity: 0.9,
             },
         }),
@@ -75,5 +75,3 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
 });
-
-// Module '"react-native"' has no exported member 'Alert'.
