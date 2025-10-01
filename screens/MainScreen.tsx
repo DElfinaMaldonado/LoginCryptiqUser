@@ -1,3 +1,4 @@
+// Module '"react-native"' has no exported member 'Alert'.
 import React from 'react';
 import { View, StyleSheet, Image, Text, TouchableOpacity, Alert, Platform, Dimensions, } from 'react-native';
 
@@ -74,3 +75,5 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
 });
+
+// Module '"react-native"' has no exported member 'Alert'.
