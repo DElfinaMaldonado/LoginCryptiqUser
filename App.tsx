@@ -2,8 +2,8 @@ import React from 'react';
 import { View, StatusBar, StyleSheet, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 // import WelcomeInitial from './screens/WelcomeInitial';
-import MainScreen from './screens/MainScreen';
-// import CryptiqAbout from './screens/CryptiqAbout';
+// import MainScreen from './screens/MainScreen';
+import PersonalData from './screens/PersonalData';
 // import PersonalData from './screens/PersonalData';
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <View style={styles.container}>
-        <MainScreen  />
+        <PersonalData  />
       </View>
     </SafeAreaProvider>
   );
