@@ -1,26 +1,23 @@
 import React from 'react';
-import { View, StatusBar, StyleSheet, useColorScheme } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-// import WelcomeInitial from './screens/WelcomeInitial';
-// import MainScreen from './screens/MainScreen';
-import PersonalData from './screens/PersonalData';
-// import PersonalData from './screens/PersonalData';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MainScreen from './screens/MainScreen';
+import CryptiqAbout from './screens/CryptiqAbout';
+
+export type RootStackParamList = {
+  MainScreen: undefined;
+  CryptiqAbout: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <View style={styles.container}>
-        <PersonalData  />
-      </View>
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="MainScreen">
+        <Stack.Screen name="MainScreen" component={MainScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="CryptiqAbout" component={CryptiqAbout} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

@@ -1,25 +1,28 @@
-// Module '"react-native"' has no exported member 'Alert'.
 import React from 'react';
-import { View, StyleSheet, Image, Text, TouchableOpacity, Alert, Platform, Dimensions, } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableOpacity, Platform, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../App';
 
 const { width, height } = Dimensions.get('window');
 
-export default function WelcomeInitial() {
+export default function MainScreen() {
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
     return (
-        <View style={styles.container}>
+        <View style={styles.welcome_container}>
             <Image
                 source={require('../assets/Cryptiq_WelcomeSplash.png')}
-                style={styles.WelcomeSplash}
+                style={styles.Welcome_Image}
                 resizeMode="cover"
             />
-            <View style={styles.buttonWrapper}>
-                <View style={styles.shadowWrapper}>
+            <View style={styles.button_Welcome}>
+                <View style={styles.welcome_Start}>
                     <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => Alert.alert('Cannot press this one')}
-                        disabled
+                        style={styles.button_navigation}
+                        onPress={() => navigation.navigate('CryptiqAbout')}
                     >
-                        <Text style={styles.buttonText}>Start / Sign Up</Text>
+                        <Text style={styles.button_Start}>Start / Sign Up</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -28,22 +31,22 @@ export default function WelcomeInitial() {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    welcome_container: {
         flex: 1,
     },
-    WelcomeSplash: {
+    Welcome_Image: {
         position: 'absolute',
         width: width,
         height: height,
     },
-    buttonWrapper: {
+    button_Welcome: {
         position: 'absolute',
         bottom: 80,
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
     },
-    shadowWrapper: {
+    welcome_Start: {
         ...Platform.select({
             ios: {
                 shadowColor: '#00D1B2',
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
             },
         }),
     },
-    button: {
+    button_navigation: {
         paddingVertical: 14,
         paddingHorizontal: 24,
         backgroundColor: '#3A3B41',
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 25,
     },
-    buttonText: {
+    button_Start: {
         color: '#00D1B2',
         fontWeight: 'bold',
         fontSize: 18,

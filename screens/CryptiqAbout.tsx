@@ -1,24 +1,31 @@
 import React from 'react';
-import { View, StyleSheet, Image, Text, TouchableOpacity, Alert, Platform, } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableOpacity, Platform, } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../App'; // Ajusta la ruta si tu archivo App.tsx está en otra carpeta
 
 export default function CryptiqAbout() {
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     return (
-        <View style={styles.containerAbout}>
+        <View style={styles.about_container}>
+            <TouchableOpacity
+                style={styles.arrowTouchable}
+                onPress={() => navigation.navigate('MainScreen')}
+            >
+                <Image
+                    source={require('../assets/arrow-return.png')}
+                    style={styles.image_about_arrow}
+                    resizeMode="cover"
+                />
+            </TouchableOpacity>
             <View style={styles.about_images}>
                 <Image
                     source={require('../assets/CryptiqLogo_Black.png')}
                     style={styles.image_about}
                     resizeMode="contain"
                 />
-                <Image
-                    source={require('../assets/arrow-return.png')}
-                    style={styles.image_about_arrow}
-                    resizeMode="cover"
-                />
             </View>
-
             <Text style={styles.about_title}>What Can You Do With Cryptiq?</Text>
-
             <View style={styles.about_list}>
                 {[
                     'Authenticate users with anti-spoof biometrics.',
@@ -36,14 +43,9 @@ export default function CryptiqAbout() {
                     </View>
                 ))}
             </View>
-
             <View style={styles.buttonWrapper}>
                 <View style={styles.shadowWrapper}>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => Alert.alert('Cannot press this one')}
-                        disabled
-                    >
+                    <TouchableOpacity style={styles.button} disabled>
                         <Text style={styles.buttonText}>Next</Text>
                     </TouchableOpacity>
                 </View>
@@ -51,8 +53,9 @@ export default function CryptiqAbout() {
         </View>
     );
 }
+
 const styles = StyleSheet.create({
-    containerAbout: {
+    about_container: {
         flex: 1,
         backgroundColor: '#000',
     },
@@ -64,12 +67,16 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
     },
-    image_about_arrow: {
+    arrowTouchable: {
         position: 'absolute',
+        top: 40,
+        left: 24,
+        padding: 10,
+        zIndex: 10,
+    },
+    image_about_arrow: {
         width: 24,
         height: 24,
-        top: 0,
-        left: 24,
     },
     about_title: {
         fontSize: 32,
@@ -101,7 +108,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         flexShrink: 1,
     },
-        buttonWrapper: {
+    buttonWrapper: {
         position: 'absolute',
         bottom: 80,
         width: '100%',
